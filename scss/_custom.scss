@@ -1,0 +1,11 @@
+
+/*
+	CUSTOM LAYOUT ========================================================================== */
+
+	@media (min-width: 768px){
+		.navbar{margin-bottom: 0}
+		.navbar li > a {
+		  padding: 10px 14px;
+		  line-height: 2.2;
+		}
+	}
