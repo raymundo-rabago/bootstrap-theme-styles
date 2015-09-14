@@ -1,16 +1,19 @@
 {
-  "name": "handlebars",
+  "name": "theme-styles",
   "version": "1.0.0",
-  "description": "test with templates",
-  "main": "index.js",
+  "description": "Scss/PostCss starter kit for bootstrap themes",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Raymundo Rabago",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^6.0.0",
     "browser-sync": "^2.8.2",
+    "cssnano": "^3.0.1",
     "gulp": "^3.9.0",
+    "gulp-cssnano": "^1.1.0",
+    "gulp-postcss": "^6.0.0",
     "gulp-sass": "^2.0.4"
   }
 }

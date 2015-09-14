@@ -23,6 +23,7 @@
     > a > img {
       @include img-responsive;
       line-height: 1;
+      margin:0 auto;
     }
 
     // WebKit CSS3 transforms for supported devices
