@@ -6,10 +6,7 @@
 @import "bootstrap/normalize";
 @import "bootstrap/print";
 @import "bootstrap/glyphicons";
-
-// Plugins
-@import "fontawesome/font-awesome";
-
+ 
 // Core CSS
 @import "bootstrap/scaffolding";
 @import "bootstrap/type";
@@ -52,6 +49,8 @@
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
 
+// Plugins
+// @import "fontawesome/font-awesome";
+
 // Custom CSS
-@import "fontawesome/font-awesome";
 @import "custom";

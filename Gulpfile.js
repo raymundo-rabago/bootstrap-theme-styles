@@ -1,9 +1,10 @@
-var gulp           = require('gulp');
-var browserSync    = require('browser-sync').create();
-var sass           = require('gulp-sass');
-var postcss        = require('gulp-postcss');
-var autoprefixer   = require('autoprefixer');
-var nano           = require('gulp-cssnano');
+var gulp           = require('gulp'),
+    browserSync    = require('browser-sync').create(),
+    sass           = require('gulp-sass'),
+    postcss        = require('gulp-postcss'),
+    autoprefixer   = require('autoprefixer'),
+    nano           = require('gulp-cssnano'),
+    rename         = require('gulp-rename');
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
@@ -11,6 +12,9 @@ gulp.task('sass', function() {
         .pipe(sass())
         .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
         .pipe(nano())
+        .pipe(rename({
+            suffix: '.min'
+        }))
         .pipe(gulp.dest("css"))
         .pipe(browserSync.stream());
 });
