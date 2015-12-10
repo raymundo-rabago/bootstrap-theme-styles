@@ -3,6 +3,7 @@ var gulp           = require('gulp'),
     sass           = require('gulp-sass'),
     postcss        = require('gulp-postcss'),
     autoprefixer   = require('autoprefixer'),
+    mqpacker       = require('css-mqpacker'),
     nano           = require('gulp-cssnano'),
     rename         = require('gulp-rename');
 
@@ -10,7 +11,11 @@ var gulp           = require('gulp'),
 gulp.task('sass', function() {
     return gulp.src("scss/**/*.scss")
         .pipe(sass())
-        .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
+        .pipe(nano())
+        .pipe(postcss([ 
+            autoprefixer({ browsers: ['last 4 versions'] }),
+            mqpacker()
+         ]))
         .pipe(nano())
         .pipe(rename({
             suffix: '.min'
