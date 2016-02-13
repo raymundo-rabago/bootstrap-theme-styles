@@ -9,13 +9,13 @@ var gulp           = require('gulp'),
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
-    return gulp.src("scss/**/*.scss")
-        .pipe(sass())
-        .pipe(nano())
+    return gulp.src("scss/*.scss")
+        .pipe(sass({errLogToConsole:true}).on('error', sass.logError))
         .pipe(postcss([ 
             autoprefixer({ browsers: ['last 4 versions'] }),
             mqpacker()
          ]))
+        .pipe(gulp.dest("css"))
         .pipe(nano())
         .pipe(rename({
             suffix: '.min'

@@ -1,0 +1,23 @@
+
+//  BOOTSTRAP CORE
+// -----------------------------------------------
+    @import "bootstrap/variables";
+    @import "bootstrap/mixins";
+    @import "bootstrap/theme";
+
+//  Plugins
+// -----------------------------------------------
+    @import "fontawesome/font-awesome";
+
+//  Custom Layout
+// ----------------------------------------------- 
+    .navbar{margin-bottom: 0}
+
+    @media (min-width: 768px){
+      .navbar li > a {
+        padding: 10px 14px;
+        line-height: 2.2;
+      }
+    }
+
+    

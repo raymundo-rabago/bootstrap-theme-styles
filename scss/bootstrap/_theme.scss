@@ -11,8 +11,44 @@
 @import "variables";
 @import "mixins";
 
+// Scaffolding
+// --------------------------------------------------
+html {
+  font-size: $font-size-base;
+}
 
-//
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color;
+  background-color: $body-bg;
+}
+
+// Links
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  &:focus {
+    @include tab-focus();
+  }
+} 
+
+hr {
+  margin-top:    $line-height-computed;
+  margin-bottom: $line-height-computed;
+  border: 0;
+  border-top: 1px solid $hr-border;
+}
+
+
 // Buttons
 // --------------------------------------------------
 
@@ -24,8 +60,8 @@
 .btn-warning,
 .btn-danger {
   text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-  $shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
-  @include box-shadow($shadow);
+  // $shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+  // @include box-shadow($shadow);
 
   // Reset the shadow
   &:active,
@@ -44,23 +80,27 @@
   }
 }
 
+
 // Mixin for generating new styles
 @mixin btn-styles($btn-color: #555) {
-  @include gradient-vertical($start-color: $btn-color, $end-color: darken($btn-color, 12%));
-  @include reset-filter; // Disable gradients for IE9 because filter bleeds through rounded corners; see https://github.com/twbs/bootstrap/issues/10620
+  background: $btn-color;
+  // @include gradient-vertical($start-color: lighten($btn-color, 8%); $end-color: $btn-color);
+  @include reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners; see https://github.com/twbs/bootstrap/issues/10620
   background-repeat: repeat-x;
-  border-color: darken($btn-color, 14%);
+  border-color: darken($btn-color, 10%);
+  border-radius: $border-radius-base;
 
   &:hover,
   &:focus  {
-    background-color: darken($btn-color, 12%);
-    background-position: 0 -15px;
+    background-color: darken($btn-color, 10%);
+    // @include gradient-vertical($start-color: $btn-color; $end-color: $btn-color);
+    // background-position: 0 -15px;
   }
 
   &:active,
   &.active {
-    background-color: darken($btn-color, 12%);
-    border-color: darken($btn-color, 14%);
+    background-color: darken($btn-color, 10%);
+    border-color: darken($btn-color, 12%);
   }
 
   &.disabled,
@@ -87,7 +127,7 @@
   }
 }
 
-// Apply the mixin to the buttons
+/// Apply the mixin to the buttons
 .btn-default { @include btn-styles($btn-default-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
 .btn-primary { @include btn-styles($btn-primary-bg); }
 .btn-success { @include btn-styles($btn-success-bg); }
@@ -96,7 +136,6 @@
 .btn-danger  { @include btn-styles($btn-danger-bg); }
 
 
-//
 // Images
 // --------------------------------------------------
 
@@ -106,19 +145,18 @@
 }
 
 
-//
 // Dropdowns
 // --------------------------------------------------
-
+.dropdown-menu {border-radius: $border-radius-base;}
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  @include gradient-vertical($start-color: $dropdown-link-hover-bg, $end-color: darken($dropdown-link-hover-bg, 5%));
+  // @include gradient-vertical($start-color: $dropdown-link-hover-bg; $end-color: darken($dropdown-link-hover-bg, 5%));
   background-color: darken($dropdown-link-hover-bg, 5%);
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  @include gradient-vertical($start-color: $dropdown-link-active-bg, $end-color: darken($dropdown-link-active-bg, 5%));
+  // @include gradient-vertical($start-color: $dropdown-link-active-bg; $end-color: darken($dropdown-link-active-bg, 5%));
   background-color: darken($dropdown-link-active-bg, 5%);
 }
 
@@ -129,37 +167,45 @@
 
 // Default navbar
 .navbar-default {
-  @include gradient-vertical($start-color: lighten($navbar-default-bg, 10%), $end-color: $navbar-default-bg);
+  // @include gradient-vertical($start-color: lighten($navbar-default-bg, 10%); $end-color: $navbar-default-bg);
+  background:$navbar-default-bg;
   @include reset-filter; // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
   border-radius: $navbar-border-radius;
-  $shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
-  @include box-shadow($shadow);
+  // $shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+  // @include box-shadow($shadow);
 
   .navbar-nav > .open > a,
   .navbar-nav > .active > a {
-    @include gradient-vertical($start-color: darken($navbar-default-link-active-bg, 5%), $end-color: darken($navbar-default-link-active-bg, 2%));
-    @include box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
+    // @include gradient-vertical($start-color: darken($navbar-default-link-active-bg, 5%); $end-color: darken($navbar-default-link-active-bg, 2%));
+    // @include box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
+    background:$navbar-default-link-active-bg;
   }
 }
 .navbar-brand,
 .navbar-nav > li > a {
   text-shadow: 0 1px 0 rgba(255,255,255,.25);
+  i { display:block;height:10px;}
 }
 
 // Inverted navbar
 .navbar-inverse {
-  @include gradient-vertical($start-color: lighten($navbar-inverse-bg, 10%), $end-color: $navbar-inverse-bg);
+  // @include gradient-vertical($start-color: lighten($navbar-inverse-bg, 10%); $end-color: $navbar-inverse-bg);
+  background:$navbar-inverse-bg;
+  border:0;
   @include reset-filter; // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered; see https://github.com/twbs/bootstrap/issues/10257
-  border-radius: $navbar-border-radius;
+  border-radius: 0;// $navbar-border-radius;
   .navbar-nav > .open > a,
   .navbar-nav > .active > a {
-    @include gradient-vertical($start-color: $navbar-inverse-link-active-bg, $end-color: lighten($navbar-inverse-link-active-bg, 2.5%));
-    @include box-shadow(inset 0 3px 9px rgba(0,0,0,.25));
+    // @include gradient-vertical($start-color: $navbar-inverse-link-active-bg; $end-color: lighten($navbar-inverse-link-active-bg, 2.5%));
+    // @include box-shadow(inset 0 3px 9px rgba(0,0,0,.25));
+    background:$navbar-inverse-link-active-bg;
+    color:#fff;
   }
-
+  .navbar-brand {line-height:1;}
   .navbar-brand,
   .navbar-nav > li > a {
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    color:#fff;
   }
 }
 
@@ -177,13 +223,13 @@
     &:hover,
     &:focus {
       color: #fff;
-      @include gradient-vertical($start-color: $dropdown-link-active-bg, $end-color: darken($dropdown-link-active-bg, 5%));
+      background:$dropdown-link-active-bg;
+      // @include gradient-vertical($start-color: $dropdown-link-active-bg; $end-color: darken($dropdown-link-active-bg, 5%));
     }
   }
 }
 
 
-//
 // Alerts
 // --------------------------------------------------
 
@@ -207,7 +253,6 @@
 .alert-danger     { @include alert-styles($alert-danger-bg); }
 
 
-//
 // Progress bars
 // --------------------------------------------------
 
@@ -235,7 +280,6 @@
 }
 
 
-//
 // List groups
 // --------------------------------------------------
 
@@ -247,7 +291,7 @@
 .list-group-item.active:hover,
 .list-group-item.active:focus {
   text-shadow: 0 -1px 0 darken($list-group-active-bg, 10%);
-  @include gradient-vertical($start-color: $list-group-active-bg, $end-color: darken($list-group-active-bg, 7.5%));
+  // @include gradient-vertical($start-color: $list-group-active-bg; $end-color: darken($list-group-active-bg, 7.5%));
   border-color: darken($list-group-active-border, 7.5%);
 
   .badge {
@@ -256,36 +300,94 @@
 }
 
 
-//
 // Panels
 // --------------------------------------------------
 
 // Common styles
 .panel {
-  @include box-shadow(0 1px 2px rgba(0,0,0,.05));
+  // @include box-shadow(0 1px 2px rgba(0,0,0,.075));
+  border-radius: $border-radius-base;
 }
 
 // Mixin for generating new styles
 @mixin panel-heading-styles($color) {
-  @include gradient-vertical($start-color: $color, $end-color: darken($color, 5%));
+  // @include gradient-vertical($start-color: $color; $end-color: darken($color, 5%));
+  background: $color;
 }
 
 // Apply the mixin to the panel headings only
-.panel-default > .panel-heading   { @include panel-heading-styles($panel-default-heading-bg); }
-.panel-primary > .panel-heading   { @include panel-heading-styles($panel-primary-heading-bg); }
-.panel-success > .panel-heading   { @include panel-heading-styles($panel-success-heading-bg); }
-.panel-info > .panel-heading      { @include panel-heading-styles($panel-info-heading-bg); }
-.panel-warning > .panel-heading   { @include panel-heading-styles($panel-warning-heading-bg); }
-.panel-danger > .panel-heading    { @include panel-heading-styles($panel-danger-heading-bg); }
+.panel-default > .panel-heading   { @include panel-heading-styles($gray-lighter); }
+.panel-primary > .panel-heading   { @include panel-heading-styles($brand-primary); color:white;}
+.panel-success > .panel-heading   { @include panel-heading-styles($brand-success); color:white;}
+.panel-info    > .panel-heading   { @include panel-heading-styles($brand-success);    color:white;}
+.panel-warning > .panel-heading   { @include panel-heading-styles($brand-warning); color:white;}
+.panel-danger  > .panel-heading   { @include panel-heading-styles($brand-danger);  color:white;}
 
+.panel-heading a { color:#fff;  &:hover{color:#fff;} }
 
-//
 // Wells
 // --------------------------------------------------
-
 .well {
-  @include gradient-vertical($start-color: darken($well-bg, 5%), $end-color: $well-bg);
+  // @include gradient-vertical($start-color: darken($well-bg, 5%); $end-color: $well-bg);
   border-color: darken($well-bg, 10%);
-  $shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
-  @include box-shadow($shadow);
+  border-radius: $border-radius-base;
+  background:$well-bg;
+  // $shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
+  // .box-shadow($shadow);
 }
+
+// Labels
+// --------------------------------------------------
+.label {
+  display:inline-block;
+  padding: 3px 6px;
+  font-size: 52%;
+  font-weight: 400;
+}
+
+
+// Pills
+// --------------------------------------------------
+.nav-pills > .active > a {
+  background-color: $brand-info!important;
+  border-radius: $border-radius-base;
+}
+
+// Modals
+// --------------------------------------------------
+.modal-content {border-radius: $border-radius-base;}
+
+
+// FIXES
+// --------------------------------------------------
+.btn .aga {display:inline-block;margin-bottom:-4px;}
+.navbar{margin-bottom: 0}
+.well { h1,h2,h3,h4,h5 {margin:0 0 8px 0;} }
+.jumbotron {margin:18px 0;}
+.carousel img {width:100%;}
+.navbar .btn {margin-bottom:0;}
+.panel-default>.panel-heading {color:darken($brand-primary,6%);}
+.panel-group div[class^="panel-"] {border-bottom:1px solid $body-bg;  
+  &:last-child{border-bottom:none;}
+}
+
+// HELPERS
+// --------------------------------------------------
+.shadow {box-shadow:0 1px 4px rgba(0,0,0,.5); &:hover{box-shadow:0 2px 4px rgba(0,0,0,.5);} }
+.block {box-sizing:border-box;display:block;margin-bottom:24px;}
+
+
+
+// Bootstrap fixes ========================================================================
+hr{border-color:darken($body-bg,12%);}
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {width:100%;}
+.navbar {margin-bottom:0;}
+.navbar-form .btn{margin-bottom:0;}
+.navbar-brand {line-height:1.5}
+.well form .btn.pull-right{margin:-8px 0 0;}
+
+  @media (min-width: 768px){
+    .navbar{margin-bottom:0}
+    .navbar li > a {padding:10px 14px;line-height:2.2;}
+  }
+
