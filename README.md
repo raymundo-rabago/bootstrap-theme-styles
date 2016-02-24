@@ -1,5 +1,7 @@
 # bootstrap-theme-styles
 
+(BS3 TEMPLATE DEMO) [http://raymundo-rabago.github.io/bootstrap-theme-styles/]
+
 *BOOTSTRAP theme workflow:*
 using gulp with gulp-sass and browsersync plugins
 
