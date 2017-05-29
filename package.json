@@ -8,14 +8,14 @@
   "author": "Raymundo Rabago",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^6.0.0",
+    "autoprefixer": "^7.1.1",
     "browser-sync": "^2.8.2",
-    "css-mqpacker": "^4.0.0",
+    "css-mqpacker": "^6.0.0",
     "cssnano": "^3.0.1",
     "gulp": "^3.9.0",
-    "gulp-cssnano": "^1.1.0",
-    "gulp-postcss": "^6.0.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.0.4"
+    "gulp-sass": "^3.1.0"
   }
 }
